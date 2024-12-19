@@ -1,0 +1,127 @@
+body {
+  font-family: "Cinzel", serif;
+  font-weight: 400;
+  background-image: url('/static/images/bg5(withsung3).jpg');
+  background-size: cover;
+  background-position: center top 38%;
+  background-repeat: no-repeat;
+  color: #fff; /* Bright white */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  background: linear-gradient(to bottom, #1e1e5c, #333); /* Dark gradient background */
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  transform: scale(0.8);
+  margin-left: 50%;
+  margin-top: 1.7%;
+  padding-left: 10%;
+  padding-right: 10%;
+  border: 5px solid #f9c200; /* Yellow border */
+  box-shadow: 0 0 20px rgba(249, 194, 0, 0.5); /* Glowing effect */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.stat {
+  text-align: center;
+  font-size: 22px; /* Increased font size for stats */
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #f9c200; /* Bright orange */
+}
+
+h2 {
+  font-size: 32px; /* Larger font size for section titles */
+  margin-bottom: 10px;
+  color: #ffdf00; /* Bright yellow */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Text shadow */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  font-size: 20px; /* Increased font size for list items */
+  margin: 10px 0;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Separator */
+}
+
+ul li strong {
+  display: inline-block;
+  width: 150px; /* Adjusted width for strong tags */
+  font-weight: bold;
+  color: #f9c200; /* Bright orange */
+}
+
+p a {
+  color: #f9c200;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Underline effect */
+}
+
+p a:hover {
+  color: #ffdf00; /* Bright yellow on hover */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Text shadow on hover */
+}
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+  }
+  
+  h2 {
+    font-size: 28px; /* Adjusted font size for smaller screens */
+  }
+  
+  ul li {
+    font-size: 18px; /* Adjusted font size for smaller screens */
+  }
+}
+
+.entity {
+  border: 2px solid black;
+  font-family: "Cinzel", serif; /* Classic war theme font */
+  font-size: 20px; /* Adjust font size */
+  color: #ffffff; /* White color */
+  font-weight: bold; /* Bold text */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 
+               0 0 10px rgba(249, 194, 0, 0.5); /* Subtle glow effect */
+  margin-bottom: 15px; /* Space between elements */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Separator */
+  padding: 2%; /* Padding for a clean look */
+  display: flex; /* Flex display for alignment */
+  justify-content: space-between; /* Space between items */
+  background: linear-gradient(to bottom, #1e1e5c, #333); /* Dark gradient background */
+  border-radius: 0; /* Rounded corners */
+  transform: scale(1.05); /* Slightly increase size on hover */
+  box-shadow: 0 0 15px rgba(249, 194, 0, 0.7); /* More intense glow effect on hover */
+  background: linear-gradient(to bottom, #333, #1e1e5c); /* Inverse gradient on hover */
+  border-color: #f9c200; /* Change border color on hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for animation */
+}
+
+.entity:hover {
+  transform: scale(1.05); /* Slightly increase size on hover */
+  box-shadow: 0 0 15px rgba(249, 194, 0, 0.7); /* More intense glow effect on hover */
+  background: linear-gradient(to bottom, #333, #1e1e5c); /* Inverse gradient on hover */
+  border-color: #f9c200; /* Change border color on hover */
+}
+

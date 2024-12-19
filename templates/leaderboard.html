@@ -1,0 +1,142 @@
+{%from "showlinks.html" import showlinks%}
+{{showlinks()}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+        
+        body {
+            background-image: url('static/images/bg10.gif');
+            background-size: cover;
+            background-position: center;
+            color: #ffd700; /* Golden text color */
+            font-family: 'Cinzel', serif; /* Classic font */
+        }
+
+        .leaderboard-container {
+            max-width: 800px;
+           margin-left: 30%;
+            padding: 20px;
+            background-color: rgba(28, 37, 65, 0.9); /* Darker background for better text visibility */
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 223, 0, 0.7);
+            border: 2px solid #ffd700;
+        }
+
+        .leaderboard-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ffd700; /* Golden border */
+        }
+
+        th {
+            background-color: #333333;
+            color: #ffd700;
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        tr {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        tr:hover {
+            background-color: #ffd700;
+            color: #333;
+        }
+
+        .rank, .name, .level, .xp {
+            text-align: center;
+        }
+
+        .rank-1 {
+            background-color: #ffd700;
+            color: #000000;
+            font-weight: bold;
+            border: 2px solid yellow;
+            margin-top: 2%;
+        }
+
+        /* .fancy-border {
+            position: relative;
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 223, 0, 0.7);
+            overflow: hidden;
+        }
+
+        .fancy-border::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, rgba(255, 223, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+            animation: rotate 4s linear infinite;
+        } */
+         
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(0, 72, 255, 0.604);
+        }
+
+        /* tr:nth-child(odd) {
+            background-color: rgba(0, 255, 4, 0.2);
+        } */
+
+        .rank::before, .name::before, .level::before, .xp::before {
+            content: '';
+        }
+    </style>
+</head>
+<body>
+    <div class="leaderboard-container fancy-border">
+        <div class="leaderboard-title">Leaderboard</div>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th class="rank">Rank</th>
+                    <th class="name">Name</th>
+                    <th class="level">Level</th>
+                    <th class="xp">XP</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rank, player in rankings.items() %}
+                <tr class="{% if rank == 1 %}rank-1{% endif %}">
+                    <td class="rank">{{ rank }}</td>
+                    <td class="name">{{ player['Name'] }}</td>
+                    <td class="level">{{ player['Level'] }}</td>
+                    <td class="xp">{{ player['Xp'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

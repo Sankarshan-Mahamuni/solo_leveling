@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+body {
+  font-family: 'Cinzel', serif;
+  background-image: url('/static/images/bg5.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.guide-container {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(0.9);
+  padding: 20px;
+  width: 80%;
+  max-width: 800px;
+  border: 3px solid #ffdf00;
+  border-radius: 10px;
+  box-shadow: 0 0 100px rgba(255, 223, 0, 0.5);
+  text-align: center;
+  overflow-y: auto; /* Enables vertical scrolling */
+  max-height: 100vh; /* Sets a maximum height for the container */
+}
+
+h1 {
+  font-size: 3rem;
+  color: #ffdf00;
+  text-shadow: 0 0 10px rgba(255, 223, 0, 0.8);
+}
+
+h2 {
+  font-size: 2rem;
+  color: #ffdf00;
+  text-shadow: 0 0 10px rgba(255, 223, 0, 0.5);
+  margin-bottom: 10px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section p, .section ul {
+  font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section ul li {
+  margin: 10px 0;
+}
+
+a {
+  color: #ffdf00;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}

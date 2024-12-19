@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+{% from "showlinks.html" import showlinks %}
+
+<html lang="en">
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    {{showlinks()}}
+    <meta charset="UTF-8">
+    <title>Quest Directions</title>
+       <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url('/static/images/bg5.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    box-shadow: 0 0 100px rgba(16, 221, 228, 0.5);
+}
+
+.task-list {
+    max-width: 600px;
+    background-color: #1c2541;
+    border: 3px solid #0b72b5;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 150, 255, 0.5);
+    text-align: center;
+}
+
+.task-list h1 {
+    font-size: 2.5rem;
+    font-family: 'Orbitron', sans-serif;
+    color: #ff0000;
+    text-shadow: 0 0 10px rgba(0, 150, 255, 0.8);
+    margin-bottom: 20px;
+}
+
+.task-list .daily-quest {
+    background-color: #102a43;
+    color: #ee1616;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+}
+
+.task-list .goal {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #09f80d;
+    border: 2px solid #00eaff;
+    background-color: #0b132b;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #102a43;
+    border: 1px solid #0b72b5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.task:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.5);
+}
+
+.task label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #00eaff;
+}
+
+.task label input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #28a745;
+}
+
+.completed input[type="checkbox"] {
+    display: none;
+}
+
+.warning {
+    color: #e53e3e;
+    font-weight: 600;
+    margin-top: 20px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+button {
+    background-color: #0b72b5;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: 2px solid #00eaff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #102a43;
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+}
+
+.clock-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #00eaff;
+    font-size: 1.5rem;
+}
+
+.pop {
+    background-color: rgba(0, 0, 0, 0.85); /* Dark semi-transparent background */
+    padding: 30px; /* Reduced padding */
+    border-radius: 20px; /* Rounded corners */
+    border: 2px solid #f9c200; /* Bright yellow border */
+    box-shadow: 0 0 30px rgba(249, 194, 0, 0.5), 
+                0 0 50px rgba(249, 194, 0, 0.3); /* Double-layered glow */
+    text-align: center;
+    width: 25%; /* Reduced width */
+    height: auto; /* Adjust height to content */
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    margin-top: 2%;
+    animation: slideDown 0.5s ease-out;
+    font-family: "Cinzel", serif; /* Classic font style */
+}
+
+@keyframes slideDown {
+    from {
+        transform: translate(-50%, -100%);
+    }
+    to {
+        transform: translate(-50%, 0%);
+    }
+}
+
+.pop ul.flash-messages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pop ul.flash-messages li {
+    padding: 15px; /* Increased padding */
+    border-bottom: 1px solid #444; /* Darker border for a war theme */
+    color: #ffffff; /* White text for contrast */
+    font-size: 18px; /* Adjusted font size */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2), 
+                 0 0 10px rgba(249, 194, 0, 0.5); /* Subtle glow effect */
+    animation: flicker 1.5s infinite; /* Flickering effect for text */
+}
+
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 5px rgba(249, 194, 0, 0.8),
+                     0 0 10px rgba(249, 194, 0, 0.5),
+                     0 0 20px rgba(249, 194, 0, 0.3);
+    }
+    50% {
+        opacity: 0.8;
+        text-shadow: 0 0 10px rgba(249, 194, 0, 0.8),
+                     0 0 20px rgba(249, 194, 0, 0.5),
+                     0 0 30px rgba(249, 194, 0, 0.3);
+    }
+}
+
+.pop ul.flash-messages li:last-child {
+    border-bottom: none;
+}
+
+.pop .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #ffffff; /* White close button */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.pop .close:hover {
+    color: #f9c200; /* Yellow color on hover */
+    transform: rotate(90deg) scale(1.2); /* Rotate and scale effect on hover */
+}
+
+
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="pop">
+        <ul class="flash-messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        <span class="close">&times;</span>
+      </div>
+    {% endif %}
+{% endwith %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  const popup = document.querySelector(".pop");
+  const closeButton = popup.querySelector(".close");
+
+  closeButton.addEventListener("click", function() {
+    popup.style.display = "none";
+  });
+});
+</script>
+
+    <div class="task-list">
+        {% if user_id %}
+            Player ID: {{ user_id }}
+        {% endif %}
+        <h1>
+            <span>QUEST DIRECTIONS</span>
+        </h1>
+        <div class="daily-quest">
+            Daily Quest - Getting Ready to Become Powerful
+        </div>
+        <div class="goal">GOAL</div>
+        <form id="tasks-form" action="/tasks_manager" method="post">
+            <div class="tasks">
+                {% for task in tasks.values() %}
+                <div class="task">
+                    <label class="{{ 'completed' if task.completed else '' }}">
+                        <input type="checkbox" id="{{ task.title }}" name="task_id" value="{{ task.id }}" {{ 'checked' if task.completed else '' }}>
+                        <span>{{ task.title }}</span>
+                    </label>
+                    <span>[{{ task.exp }}++]</span>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="button" onclick="submitForm()">commit</button>
+        </form>
+        
+        <div class="warning">
+            WARNING! - Failing to complete this daily quest will bring a punishment associated with the reduction in xps.
+        </div>
+        <p><a href="/profileview/{username}">profileview</a></p>
+        <div class="clock-icon">
+            <i class="fas fa-clock text-3xl"></i> <span id="current-time"></span>
+        </div>
+    </div>
+
+    <script>
+        function submitForm() {
+            const checkboxes = document.querySelectorAll('input[name="task_id"]:checked');
+            const taskIds = Array.from(checkboxes).map(checkbox => checkbox.id);
+    
+            console.log('Selected Task IDs:', taskIds);
+    
+            if (taskIds.length === 0) {
+                alert('Please select a task to submit.');
+                return;
+            }
+    
+            fetch('/tasks_manager', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ task_ids: taskIds })
+            })
+           .then(response => response.json())
+           .then(() => {
+                window.location.href = window.location.href; // Redirect to same page, effectively reloading
+            })
+           .catch(error => console.error('Error:', error));
+        }
+    </script>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('current-time').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        updateTime(); // Initial call to display current time
+
+        // Update time every second
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+{% macro popup() %}
+
+<style>
+    /* Global styles */
+   /* Global styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-image: url('/static/images/faceBG.jpg');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  width: 90%;
+  max-width: 35rem;
+  padding: 1rem;
+  background: transparent;
+  margin: auto;
+}
+
+.content-box {
+  background-image: url('/static/images/gif5.gif');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align:center;
+  position: relative;
+  margin: 10% auto;
+  padding: 2rem;
+  border: 5px solid #1d4ed8;
+  width: 100%;
+  max-width: 40rem;
+  border-radius: 10px;
+  box-shadow: 0 0 100px rgba(16, 221, 228, 0.5);
+  animation: pulsate 1.5s infinite;
+}
+
+@keyframes pulsate {
+  0% {
+    box-shadow: 0 0 10px rgba(16, 221, 228, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(16, 221, 228, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(16, 221, 228, 0.5);
+  }
+}
+
+.message {
+  margin-top:60%;
+}
+
+
+.content-box p {
+  margin: 0.75rem 0;
+}
+
+.content-box .bold {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+.content-box .highlight {
+  color: #09ff01;
+  font-weight: bold;
+  border: black;
+  text-shadow: 0 0 5px rgba(239, 68, 68, 0.8);
+  animation: flicker 1.5s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(239, 68, 68, 0.8), 0 0 10px rgba(239, 68, 68, 0.5), 0 0 20px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    opacity: 0.8;
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.8), 0 0 20px rgba(239, 68, 68, 0.5), 0 0 30px rgba(239, 68, 68, 0.3);
+  }
+}
+
+.buttons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.buttons button {
+  background: #fff;
+  color: #1d4ed8;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid #1d4ed8;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.buttons button:hover {
+  background: #1d4ed8;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(16, 221, 228, 0.7);
+  transform: translateY(-3px);
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+@keyframes modalopen {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-content::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(14, 6, 239, 0.5), transparent);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+ opacity: 0.8;
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 2rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #f9c200;
+  text-decoration: none;
+  transform: rotate(90deg);
+  transition: all 0.3s ease;
+}
+</style>
+
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2></h2>
+      <div class="container">
+          <div class="content-box">
+              <div class="message">
+                  <p class="bold">
+                      <span class="highlight"> Welcome, Player! </span>
+                  </p>
+              </div>
+              <p class="bold"></p>
+              <div class="buttons">
+                  <form method="POST" action="/">
+                      <button type="submit" name="button" value="Accept">START</button>
+                      <button type="submit" name="button" value="Refuse">REGISTER</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<script>
+    // JavaScript for modal functionality
+    var modal = document.getElementById("myModal");
+
+    function openModal() {
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    };
+
+    // Open the modal after a delay
+    window.onload = function() {
+        setTimeout(openModal, 500); // Delay of 500 milliseconds
+    };
+</script>
+
+{% endmacro %}

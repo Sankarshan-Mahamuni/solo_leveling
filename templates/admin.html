@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Python Function</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #call-python-btn {
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #call-python-btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <form action="/admin" method="post">
+        <button id="call-python-btn" name="call-python-btn" value="reset-all-tasks">RESET ALL TASKS TO DEFAULT</button>
+    </form>
+    <br>
+    <form action="/reset_tasks" method="post">
+        <button id="call-python-btn" name="call-python-btn" value="plan-table">Delete Current Plan</button>
+    </form>
+
+    <!-- Popup Notification Code -->
+    <style>
+        .pop {
+            background-color: rgba(0, 0, 0, 0.85); /* Dark semi-transparent background */
+            padding: 30px; /* Reduced padding */
+            border-radius: 20px; /* Rounded corners */
+            border: 2px solid #f9c200; /* Bright yellow border */
+            box-shadow: 0 0 30px rgba(249, 194, 0, 0.5), 
+                        0 0 50px rgba(249, 194, 0, 0.3); /* Double-layered glow */
+            text-align: center;
+            width: 25%; /* Reduced width */
+            height: auto; /* Adjust height to content */
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            margin-top: 2%;
+            animation: slideDown 0.5s ease-out;
+            font-family: "Cinzel", serif; /* Classic font style */
+        }
+        @keyframes slideDown {
+            from {
+                transform: translate(-50%, -100%);
+            }
+            to {
+                transform: translate(-50%, 0%);
+            }
+        }
+        .pop ul.flash-messages {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .pop ul.flash-messages li {
+            padding: 15px; /* Increased padding */
+            border-bottom: 1px solid #444; /* Darker border for a war theme */
+            color: #ffffff; /* White text for contrast */
+            font-size: 18px; /* Adjusted font size */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2), 
+                         0 0 10px rgba(249, 194, 0, 0.5); /* Subtle glow effect */
+            animation: flicker 1.5s infinite; /* Flickering effect for text */
+        }
+        @keyframes flicker {
+            0%, 100% {
+                opacity: 1;
+                text-shadow: 0 0 5px rgba(249, 194, 0, 0.8),
+                             0 0 10px rgba(249, 194, 0, 0.5),
+                             0 0 20px rgba(249, 194, 0, 0.3);
+            }
+            50% {
+                opacity: 0.8;
+                text-shadow: 0 0 10px rgba(249, 194, 0, 0.8),
+                             0 0 20px rgba(249, 194, 0, 0.5),
+                             0 0 30px rgba(249, 194, 0, 0.3);
+            }
+        }
+        .pop ul.flash-messages li:last-child {
+            border-bottom: none;
+        }
+        .pop .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #ffffff; /* White close button */
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+        }
+        .pop .close:hover {
+            color: #f9c200; /* Yellow color on hover */
+            transform: rotate(90deg) scale(1.2); /* Rotate and scale effect on hover */
+        }
+    </style>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="pop">
+        <ul class="flash-messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        <span class="close">&times;</span>
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const popup = document.querySelector(".pop");
+            const closeButton = popup.querySelector(".close");
+            closeButton.addEventListener("click", function() {
+                popup.style.display = "none";
+            });
+        });
+    </script>
+</body>
+</html>

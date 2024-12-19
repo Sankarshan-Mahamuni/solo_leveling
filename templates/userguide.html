@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% from "showlinks.html" import showlinks %}
+  {{ showlinks() }}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Guide</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/userguide.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Pirata+One&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="guide-container">
+    <h1>Welcome to Your Journey</h1>
+    <div class="section">
+      <h2>Unleash Your Potential</h2>
+      <p>Embark on an epic journey to become the best version of yourself. This app is your companion in building powerful habits, conquering daily challenges, and unlocking your true potential. With each completed task, you grow stronger, smarter, and more resilient.</p>
+    </div>
+    <div class="section">
+      <h2>How It Works</h2>
+      <ul>
+        <li><strong>Daily Quests:</strong> Every day, you will face new quests designed to push you towards greatness. Complete these tasks to earn experience points (XP) and rewards.</li>
+        <li><strong>Tasks:</strong> Each task is a stepping stone towards your personal growth. Whether it's a physical challenge or a mental exercise, every task completed brings you closer to your goals.</li>
+        <li><strong>Levels:</strong> As you accumulate XP, you level up. Each level represents a new milestone in your journey, unlocking new challenges and rewards.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Mastering XP and Levels</h2>
+      <p>Your progress is measured by the XP you earn. The more tasks you complete, the more XP you gain. Here's how it works:</p>
+      <p><code>Required XP = Level * 100</code></p>
+      <p>For example, to reach Level 2, you need 100 XP. To reach Level 3, you need 200 XP, and so on. Each level brings new opportunities and greater rewards.</p>
+    </div>
+    <div class="section">
+      <h2>Enhance Your Attributes</h2>
+      <ul>
+        <li><strong>Strength:</strong> Build physical power by completing physically demanding tasks. Each task conquered makes you stronger.</li>
+        <li><strong>Intelligence:</strong> Sharpen your mind with tasks that challenge your intellect. Each completed task enhances your wisdom.</li>
+        <li><strong>Emotional Control:</strong> Develop emotional resilience by tackling tasks that require mental fortitude. Mastering these tasks improves your emotional balance.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Stay Motivated</h2>
+      <p>Consistency is key. If you miss a daily quest, you will face a penalty, resulting in a reduction of your hard-earned XP. Stay committed and keep pushing forward to avoid setbacks.</p>
+    </div>
+    <p><a href="/">Back to Home</a></p>
+  </div>
+</body>
+</html>

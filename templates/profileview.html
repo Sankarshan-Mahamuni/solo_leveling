@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% from "showlinks.html" import showlinks %}
+{{showlinks()}}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile View</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/viewprofile.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Pirata+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+    <div class="content-box">
+      <!-- <h2>Welcome, {{ username }}!</h2> -->
+      <h2>Player's Profile:</h2>
+      
+      <ul>
+
+        <li><strong>Name:</strong> <div class="entity">{{profile_data['Name'] }}</div></li>
+        <li><strong>Age:</strong> {{ profile_data['Age'] }}</li>
+        <li><strong>Height:</strong> {{ profile_data['Height'] }}</li>
+        <li><strong>Weight:</strong> {{ profile_data['Weight'] }}</li>
+        <!-- <li><strong>Email:</strong> {{ profile_data['Email'] }}</li> -->
+        <li><strong>Skills:</strong><ul><li>Sql-database</li><li>Calisthenic-Beginner</li></ul></li>
+      </ul>
+      <br>
+      <hr size="5px" color="white">
+      <div class="stat">
+      <h2>STATS</h2>
+      </div>
+      <ul>
+        <!-- <li><strong>Level:</strong> {{ profile_data['Level'] }}</li> -->
+        <!-- <li><strong>Strength:</strong> {{ profile_data['Strength_level'] }}</li>
+        <li><strong>Intelligence:</strong> {{ profile_data['Intelligence_level'] }}</li>
+        <li><strong>Imotional control:</strong> {{ profile_data['Imotional_control'] }}</li> -->
+        <li><strong>Level:</strong> {{ profile_data['Level'] }}</li>
+        <li><strong>Strength:</strong> 4 </li>
+        <li><strong>Intelligence:</strong>3</li>
+        <li><strong>Imotional control:</strong>1</li>
+      </ul>
+      <hr size="5px" color="white">
+      <div class="stat">
+        <h2>Points</h2>
+      </div>
+      <ul>
+        <li><strong>Xp:</strong> {{ profile_data['Xp'] }}</li>
+        <li><strong>Strength_points:</strong> {{ profile_data['Strength_points'] }}</li>
+        <li><strong>Intelligence_points:</strong> {{ profile_data['Intelligence_points'] }}</li>
+        <li><strong>Meditation_points:</strong> {{ profile_data['Meditation_points'] }}</li>
+      </ul>
+      <p><a href="/">Back to Home</a></p>
+      <p><a href="/tasks_manager">DAILY QUEST</a></p>
+    </div>
+  </div>
+</body>
+
+</html>

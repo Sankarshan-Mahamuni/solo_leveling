@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% from "showlinks.html" import showlinks %}
+    {{ showlinks() }}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Journey</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Pirata+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/tasks_manager">Tasks</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul> -->
+        </nav>
+        <div class="user-profile">
+            <!-- <img src="{{ url_for('static', filename='images/gif4.gif') }}" alt="User Avatar"> -->
+            <span>{{ username }}</span>
+        </div>
+    </header>
+    <main class="page-content">
+        <section class="welcome-section">
+            <div class="character">
+                <img src="{{ url_for('static', filename='images/suncharacter.gif') }}" alt="Guide Character">
+            </div>
+            <div class="storyline">
+                <h1>Welcome to the Quest Journey!</h1>
+                <p>
+                    Brave Warrior, your journey begins here. In this world, your daily tasks are your quests, 
+                    and your habits are your skills. By completing quests and improving your skills, you will 
+                    earn experience points (XP) and level up. Are you ready to embark on this epic adventure?
+                </p>
+                <button onclick="window.location.href='/tasks_manager'">Start Your Journey</button>
+            </div>
+        </section>
+        <section class="dashboard">
+            <div class="stats">
+                <h2>Your Progress</h2>
+                <div class="stat-item">
+                    <span>Total XP:</span> <strong>{{ total_xp }}</strong>
+                </div>
+                <div class="stat-item">
+                    <span>Current Level:</span> <strong>{{ current_level }}</strong>
+                </div>
+                <div class="stat-item">
+                    <span>Recent Activities:</span>
+                    <ul>
+                        {% for activity in recent_activities %}
+                        <li>{{ activity }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="widgets">
+                <div class="widget">
+                    <h3>Remaining  Quest</h3>
+                    <ul>
+                        {% for task in upcoming_tasks %}
+                        <li>{{ task }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="widget">
+                    <div class="top-part">
+                    <h3> Goal-Map </h3>
+                    <div class="goal-icon">
+                    <button onclick="window.location.href='/create_plan'">SET Goal</button>
+                    </div>
+                    </div>
+                    <div class="date">
+                        {{date}} - Today's Focus Areas:
+                    </div>
+                    <br>
+                    <ol>
+                        {% for achievement in achievements %}
+                        <li> {{ achievement }} </li>
+                        {% endfor %}
+                    </ol>
+                    
+                </div>
+                <div class="widget">
+                    <h3>Daily Quest</h3>
+                    <p>{{ daily_quest }}</p>
+                    <button onclick="window.location.href='/tasks_manager'">Complete Quest</button>
+                </div>
+            </div>
+        </section>
+        <section class="motivational-quotes">
+            <h2>Inspirational Quotes</h2>
+            <p>{{ random_quote }}</p>
+        </section>
+        <section class="community-engagement">
+            <div class="player-spotlight">
+                <h2>Player of the Week</h2>
+                <p>{{ player_of_the_week }}</p>
+            </div>
+            <div class="widget">
+                <h2>Leaderboard</h2>
+                <p>Top Players:</p>
+                <ol>
+                    {% for player in top_players %}
+                    <li>{{ player }}</li>
+                    {% endfor %}
+                </ol>
+                <button onclick="window.location.href='/leaderboard'">View Full Leaderboard</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="/user_guide">User Guide</a></li>
+            <li><a href="/settings">Settings</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </footer>
+</body>
+
+</html>

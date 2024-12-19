@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+body {
+    font-family: 'Cinzel', serif;
+    background: url('/static/images/bg10.gif') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #ffd700; /* Golden text color */
+}
+
+.container {
+    background: rgba(28, 37, 65, 0.9); /* Darker background for better text visibility */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 223, 0, 0.7);
+    border: 2px solid #ffd700;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h2, h3, h4 {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+textarea {
+    width: 60%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ffd700;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffd700;
+    font-family: 'Cinzel', serif;
+    box-shadow: inset 0 0 10px rgba(255, 223, 0, 0.5);
+}
+
+textarea::placeholder {
+    color: #ffd700;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #ffd700;
+    color: #333;
+    font-family: 'Cinzel', serif;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    /* box-shadow: 0 0 10px rgba(255, 223, 0, 0.7); */
+}
+
+button:hover {
+    background: #e6b800;
+    transform: scale(1.05);
+}
+
+.todo-list {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.day-section {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ffd700;
+    color: #ffd700;
+    font-family: 'Cinzel', serif;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}

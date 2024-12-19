@@ -1,0 +1,40 @@
+{% from "modelstart.html" import popup %}
+{% from "showlinks.html" import showlinks %}
+{{showlinks()}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/start.css')}}">
+  <title>Alarm</title>
+</head>
+
+<body>
+
+
+  <div class="header">
+    {{popup()}}
+  </div>
+
+
+  <!-- <div class="container">
+    <div class="content-box">
+      <div class="message">
+        <p class="bold">
+          <span class="highlight">If you're not prepared to work hard to enhance your transformation, then you shouldn't engage with this system.</span>
+        </p>
+      </div>
+      <p class="bold">WILL YOU ACCEPT?</p>
+      <div class="buttons">
+        <form method="POST" action="/">
+          <button type="submit" name="button" value="Accept">Accept</button>
+          <button type="submit" name="button" value="Refuse">Refuse</button>
+        </form>
+      </div>
+    </div>
+  </div> -->
+</body>
+
+</html>

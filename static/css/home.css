@@ -1,0 +1,326 @@
+body {
+    font-family: 'Cinzel', serif;
+    background-image: url('/static/images/bg8.jpg');
+    background-color: darkblue;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    color: #fff;
+   
+}
+
+.top-part{
+display:flex;
+justify-content: space-around;
+
+}
+.goal-icon{
+    transform: scale(0.7);
+}
+
+
+.goal-icon:hover {
+    background-color: #bade18; /* add a hover effect if you want */
+}
+
+.page-content{
+    margin-left: 17%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ffdf00;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+main {
+    padding: 20px;
+}
+
+.welcome-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+
+.character {
+    width: 25%;
+    margin-right: 40px;
+    margin-left: 13%;
+}
+
+.character img {
+    width: 100%;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.storyline {
+    max-width: 600px;
+}
+
+.storyline h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffdf00;
+    text-shadow: 0 0 10px rgba(255, 223, 0, 0.7);
+}
+
+.storyline p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.storyline button {
+    background-color: #ffdf00;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.storyline button:hover {
+    background-color: #ffc700;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.stats {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    flex: 1;
+    margin-right: 20px;
+}
+
+.stats h2 {
+    margin-bottom: 20px;
+    color: #ffdf00;
+}
+
+.stat-item {
+    margin-bottom: 15px;
+}
+
+.stat-item span {
+    font-weight: bold;
+}
+
+.widgets {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.widget {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    flex: 1;
+    min-width: 250px;
+}
+
+.widget h3 {
+    margin-bottom: 10px;
+    color: #ffdf00;
+}
+
+
+.widget button {
+    background-color: #ffdf00;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.widget button:hover {
+    background-color: #ffc700;
+}
+
+.motivational-quotes {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.motivational-quotes h2 {
+    margin-bottom: 20px;
+    color: #ffdf00;
+}
+
+.motivational-quotes p {
+    font-size: 1.2rem;
+}
+
+.community-engagement {
+    display: flex;
+    justify-content: space-between;
+}
+
+.player-spotlight, .leaderboard-teaser {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    flex: 1;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.player-spotlight h2, .leaderboard-teaser h2 {
+    margin-bottom: 20px;
+    color: #ffdf00;
+}
+
+.player-spotlight p, .leaderboard-teaser p {
+    margin-bottom: 10px;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-top: 1px solid #fff;
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul li {
+    margin: 0 15px;
+}
+
+footer ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+footer ul li a:hover {
+    color: #ffdf00;
+}
+
+
+.widget ul {
+    list-style: none;
+    padding: 0;
+}
+
+.widget ul li {
+    margin-bottom: 10px;
+}
+
+.widget ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* .widget ul li {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    transition: background 0.3s, border-color 0.3s;
+} */
+
+.widget ul li:hover {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: #ffdf00;
+}
+
+
+
+
+.widget ol li {
+    margin-bottom: 10px;
+}
+
+.widget ol {
+    list-style:lower-roman;
+    padding: 0 3%;
+}
+
+/* .widget ul li {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    transition: background 0.3s, border-color 0.3s;
+} */
+
+.widget ol li:hover {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: #ffdf00;
+}
+

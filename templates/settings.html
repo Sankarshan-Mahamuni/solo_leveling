@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% from "showlinks.html" import showlinks %}
+{{showlinks()}}
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/settings.css')}}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/setprofile.css')}}"> -->
+
+    <title>Document</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="pop">
+        <ul class="flash-messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        <span class="close">&times;</span>
+      </div>
+    {% endif %}
+{% endwith %}
+    <div class="container">
+        <div class="content-box">
+            <div class="content-box-header"> ENTER THE NEW TASK HERE  </div>
+            <form method="post">
+                <input type="text" name="new_task" placeholder="Enter the task here" class="input">
+                <input type="submit" name="submit" value="Add Task" class="button" >
+            </form>
+
+        </div>
+    </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  const popup = document.querySelector(".pop");
+  const closeButton = popup.querySelector(".close");
+
+  closeButton.addEventListener("click", function() {
+    popup.style.display = "none";
+  });
+});
+</script>
+
+
+    <div class="tasks-form">
+        <form id="tasks-form" action="/settings" method="post">
+            <div class="tasks">
+                {% for task in tasks.values() %}
+                <div class="task">
+                    <label class="{{ 'completed' if task.completed else '' }}">
+                        <input type="checkbox" id="{{ task.title }}" name="task_id" value="{{ task.id }}" >
+                        <span>{{ task.title }}</span>
+                    </label>
+                    <span>[{{ task.exp }}++]</span>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="button" onclick="submitForm()"> DELETE SELECTED TASKS </button>
+        </form>
+
+    </div>
+
+    <script>
+        function submitForm() {
+            const checkboxes = document.querySelectorAll('input[name="task_id"]:checked');
+            const task_titles = Array.from(checkboxes).map(checkbox => checkbox.id);
+    
+            console.log('Selected Task titles are:', task_titles);
+    
+            if (task_titles.length === 0) {
+                alert('Please select a task to submit.');
+                return;
+            }
+    
+            fetch('/settings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ task_titles: task_titles })
+            })
+           .then(response => response.json())
+           .then(() => {
+                window.location.href = window.location.href; // Redirect to same page, effectively reloading
+            })
+           .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+
+
+    
+</body>
+</html>
